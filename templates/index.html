@@ -1,0 +1,37 @@
+{{ define "title" }}叫べ！{{ end }}
+{{ define "content"}}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="card card-inverse text-xs-center">
+                <div class="card-header card-primary card-title">
+                    さぁ叫べ!
+                </div>
+                <div class="card-block">
+                    <form action="/" method="post">
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="Shout" value="{{.Shout}}">
+
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary" type="submit">叫ぶ！</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{if .BotMessage}}
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="alert alert-success" role="alert">
+                <strong>Botさん:</strong> {{.BotMessage}}
+            </div>
+        </div>
+    </div>
+    {{end}}
+</div>
+{{ end }}

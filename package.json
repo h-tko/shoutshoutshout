@@ -1,0 +1,21 @@
+{
+  "name": "shoutshoutshout",
+  "version": "1.0.0",
+  "description": "The Go Starter demonstrates a simple, reusable Go web application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "path": "^0.12.7",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.5"
+  }
+}
