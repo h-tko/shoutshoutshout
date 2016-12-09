@@ -4,15 +4,16 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"os"
 	"io/ioutil"
 	"net/http"
 )
 
 const (
 	BLUEMIX_CONVERSATION_URL  string = "https://gateway.watsonplatform.net/conversation/api/v1/workspaces/%s/message?version=%s"
-	CONVERSATION_WORKSPACE_ID string = "xxxxxxxxxxxxx"
-	CONVERSATION_USERNAME     string = "xxxxxxxxxxxxx"
-	CONVERSATION_PASSWORD     string = "xxxxxxxxxxxx"
+	CONVERSATION_WORKSPACE_ID string = "xxxxxxxxxxxxxxx"
+	CONVERSATION_USERNAME     string = "xxxxxxxxxxxxxxx"
+	CONVERSATION_PASSWORD     string = "xxxxxxxxxxx"
 	VERSION                   string = "yyyy-mm-dd"
 )
 
@@ -53,11 +54,19 @@ func (this *Watson) ConversationApi(send_message string) string {
 	body, _ := ioutil.ReadAll(res.Body)
 
 	if res.StatusCode != http.StatusOK {
-		print("%v", res)
+		fmt.Fprintf(os.Stderr, "%v", res)
+
+		return ""
 	}
 
 	output := resdata{}
 	json.Unmarshal(body, &output)
+
+        if len(output.Output.Text) < 1 {
+		fmt.Fprintf(os.Stderr, "%v", body)
+		
+		return ""
+	}
 
 	return output.Output.Text[0]
 }
