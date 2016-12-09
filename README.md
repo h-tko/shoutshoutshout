@@ -23,3 +23,9 @@ const (
     VERSION                   string = "yyyy-mm-dd" //　この辺
 )
 ```
+
+また、このサンプルアプリはgo_buildpackを利用してbluemixにデプロイするようにできていますので、デプロイ時は以下コマンドでデプロイしてください。
+
+```
+$ cf push <application_name> -b go_buildpack
+```
